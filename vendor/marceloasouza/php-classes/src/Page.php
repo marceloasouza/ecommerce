@@ -17,8 +17,9 @@ class Page {
 		$this->options = array_merge($this->defaults, $opts);
 
 		$config = array(
-					"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/ecommerce/views",
-					"cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/ecommerce/views-cache/",
+					
+					"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/",
+					"cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
 					"debug"         => false 
 				   );
 
@@ -26,7 +27,7 @@ class Page {
 
 	$this->tpl = new Tpl;
 
-	$this->setData($this->option["data"]);
+	$this->setData($this->options['data']);
 
 	$this->tpl->draw("header");
 
@@ -49,9 +50,10 @@ class Page {
 
 	}
 
-	public function __destruct(){
+	public function __destruct()
+	{
 
-		$this->tpl->draw("footer"); 
+		$this->tpl->draw("footer");
 	}
 }
 
